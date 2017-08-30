@@ -1,68 +1,100 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
+<noscript>
+    <meta http-equiv="refresh" content="0; URL=http://example.com/noscript.html"/>
+</noscript>
+  <head>
+    <meta charset="utf-8">
+    <title>BMI Calculator</title>
+    <script src="src/person.js"></script>
+    <script src="src/bmi_calculator.js"></script>
+    <script src='https://code.jquery.com/jquery-2.1.4.js'></script>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>In memory of Chris</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 
-<body>
+  </head>
+  <body>
+    <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-  <h1>Remembering the Legend</h1>
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-  <p>
+      <div class="container">
+        <!-- Page Content goes here -->
 
-    July 20 1964. In this day was born Chris Cornell, a man who changed my life
+    <h1>BMI Calculator</h1>
+    <blockquote>
+    <h2>Using metric method</h2>
+  </blockquote>
 
-  </p>
 
-  <p>
 
-    I would like to remember him with my First Web site, as far as i can,
-    introducing him to you
 
-  </p>
 
-  <img src="http://silvermusicradio.it/wp-content/uploads/2017/05/Chris-Cornell.jpg"
-  alt="One of the last pictures of Chris" />
 
- <p>
+    <form class="col s12">
+      <div class="input-field col s6">
+      <input type="text" id="weight" class="validate">
+      <label for="weight">Weight in kg</label>
+    </div>
+    <div class="input-field col s6">
+      <input type="text" id="height" class="validate">
+      <label for="height">Height in cm</label>
+    </div>
+      <input <a class="waves-effect waves-light btn" type="button" id="calculate" value="Calculate">
+    </form>
+    <span id="display_value"></span>
+    <span id="display_message"></span>
+    <blockquote>
+    <h2>Using imperial method</h2>
+  </blockquote>
 
-   To My Sweet Christopher,
 
-You were the best father, husband and son-in-law. Your patience, empathy and love always showed through.
 
-You had always said I saved you, that you wouldn't be alive if it were not for me. My heart gleamed to see you happy, living and motivated. Excited for life. Doing everything you could to give back. We had the time of our lives in the last decade and I'm sorry, my sweet love, that I did not see what happened to you that night. I'm sorry you were alone, and I know that was not you, my sweet Christopher. Your children know that too, so you can rest in peace.
 
-I’m broken, but I will stand up for you and I will take care of our beautiful babies. I will think of you every minute of every day and I will fight for you. You were right when you said we are soulmates. It has been said that paths that have crossed will cross again, and I know that you will come find me, and I will be here waiting.
+    <form class="col s12">
+    <div class="row">
+        <div class="input-field col s12">
+      <input type="text" id="weight_pounds" class="validate">
+      <label for="weight_puonds">Weight in pounds</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" id="height_feets" class="validate">
+      <label for="height_feets">Height in feets</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="text" id="height_inches" class="validate">
+      <label for="height_inches">Height in inches</label>
+    </div>
+      <input <a class="waves-effect waves-light btn" type="button" id="calculate_2" value="Calculate"></a>
+    </form>
+    <div>
+      <span id="display_value_2"></span>
+      <span id="display_message_2"></span>
+    </div>
+  </body>
 
-I love you more than anyone has ever loved anyone in the history of loving and more than anyone ever will.
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#calculate').click(function () {
+          var w = parseFloat($('#weight').val());
+          var h = parseFloat($('#height').val());
+          var person = new Person({weight: w, height: h});
+          person.calculate_bmi();
+          $('#display_value').html('Your BMI is ' + person.bmi_value);
+          $('#display_message').html(person.bmi_message);
+        });
+        $('#calculate_2').click(function () {
+          var wp = parseFloat($('#weight_pounds').val());
+          var hf = parseFloat($('#height_feets').val());
+          var hi = parseFloat($('#height_inches').val());
+          var person_imperial = new Person({weight_pounds: wp, height_feets: hf, height_inches: hi});
+          person_imperial.calculate_bmi_imperial();
+          $('#display_value_2').html('Your BMI is ' + person_imperial.bmi_value);
+          $('#display_message_2').html(person_imperial.bmi_message);
+        });
+      });
 
-Always and forever,
-Your Vicky (Chris's Wife)
-
- </p>
-
-  <p>
-
- Not only a singer or a poet, but a beloved man from all his Family and friends
-
- </p>
-
- <h2> Here are some of my favourite Chris's songs:
-
-   <a
-
-   href="https://www.youtube.com/watch?v=14r7y6rM6zA" target="_blank">
-      Jesus Chirst pose,
-
-    </a>
-
-<a href ="https://www.youtube.com/watch?v=pBZs_Py-1_0" target="_blank">
-  Rusty cage </a>
-
-</body>
-
+    </script>
+  </body>
 </html>
