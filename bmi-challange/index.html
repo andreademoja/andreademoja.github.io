@@ -68,6 +68,8 @@
 
   <script type="text/javascript">
       $(document).ready(function () {
+        $('.imperial-input').hide();
+        $('.metric-input').hide();
         $('#calculate').click(function () {
           var w = parseFloat($('#weight').val());
           var h = parseFloat($('#height').val());
